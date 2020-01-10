@@ -6,10 +6,10 @@ namespace inheritance
     internal class AdvertisingAgency
     {
         protected static string _name;
-        private float _rating;
+        private double _rating;
         private string agencyname;
 
-        public AdvertisingAgency(string name, float rating)
+        public AdvertisingAgency(string name, double rating)
         {
             Name = name;
             Rating = rating;
@@ -26,7 +26,7 @@ namespace inheritance
             set => _name = value;
         } // свойство (инкапсулирует _name)
 
-        public float Rating
+        public double Rating
         {
             get => _rating;
             set => _rating = value;
@@ -42,9 +42,11 @@ namespace inheritance
         {
             Console.WriteLine("Имя рекламного агентства: " + Name);
             Console.WriteLine("Рейтинг рекламного агентства: " + Rating);
+            /*
             Console.WriteLine("Вид добавленной рекламы: " + Ads[0].Type);
             Console.WriteLine("Цена: " + Ads[0].Price);
             Console.WriteLine("Кол-во заказов: " + Ads[0].OrdersCount);
+            */
         }
     }
 
@@ -267,16 +269,18 @@ namespace inheritance
                 clientnumber,
                 clienthouse;
 
-            float rating;
+            double rating;
             
             Console.Write("Название агентства: ");
             agencyname = Console.ReadLine();
 
             Console.Write("Введите рейтинг: ");
-            rating = Int32.Parse(Console.ReadLine());
+            var buf = Console.ReadLine();
+            rating = Convert.ToDouble(buf.Trim());
             
             AdvertisingAgency agency = new AdvertisingAgency(agencyname, rating);
             Agencies.Add(agency);
+            Agencies[0].DisplayNameAndAd();
             
             return 0;
         }
