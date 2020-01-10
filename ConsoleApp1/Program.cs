@@ -138,11 +138,10 @@ namespace inheritance
     {
         static List<AdvertisingAgency> Agencies = new List<AdvertisingAgency>() { };
 
-        static int Main()
+        static int Menu()
         {
-
             int choose = 5;
-
+            Console.Clear();
             Console.WriteLine("1. Добавить агенство");
             Console.WriteLine("2. Добавить сотрудника");
             Console.WriteLine("3. Добавить клиента");
@@ -154,6 +153,9 @@ namespace inheritance
                 case 1:
                 {
                     AddAgency();
+                    Console.WriteLine("Агенство успешно добавлено");
+                    Console.ReadKey();
+                    Menu();
                     break;
                 }
                 case 2:
@@ -173,7 +175,13 @@ namespace inheritance
                     return 0;
                 }
             }
+            return 0;
+        }
+        
+        static int Main()
+        {
 
+            Menu();
             /*for (;;)
             {
                 
