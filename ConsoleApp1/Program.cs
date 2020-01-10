@@ -5,7 +5,7 @@ namespace inheritance
 {
     internal class AdvertisingAgency
     {
-        private static string _name;
+        protected static string _name;
         private float _rating;
         private string agencyname;
 
