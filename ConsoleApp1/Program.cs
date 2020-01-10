@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace Наследование
+namespace inheritance
 {
     internal class AdvertisingAgency
     {
-        public static string _name;
-        public string _rating;
+        private static string _name;
+        private float _rating;
         private string agencyname;
 
-        public AdvertisingAgency(string name, string rating)
+        public AdvertisingAgency(string name, float rating)
         {
             Name = name;
             Rating = rating;
@@ -25,7 +26,7 @@ namespace Наследование
             set => _name = value;
         } // свойство (инкапсулирует _name)
 
-        public string Rating
+        public float Rating
         {
             get => _rating;
             set => _rating = value;
@@ -133,31 +134,52 @@ namespace Наследование
 
     internal class Program
     {
-        private static void Main()
+        List<AdvertisingAgency> Agencies = new List<AdvertisingAgency>() { };
+
+        int Main()
         {
-            string agencyname,
-                adtype,
-                empname,
-                emppos,
-                empdep,
-                empnumber,
-                clientname,
-                clientlastname,
-                clientpatronymic,
-                clientnumber,
-                clienthouse;
 
-            for (;;)
+            int choose = 5;
+
+            Console.WriteLine("1. Добавить агенство");
+            Console.WriteLine("2. Добавить сотрудника");
+            Console.WriteLine("3. Добавить клиента");
+            Console.WriteLine("4. Посмотреть информацию об агенствах");
+            Console.WriteLine("5. Выйти через окно");
+            choose = Int32.Parse(Console.ReadLine() ?? throw new InvalidOperationException());
+            switch (choose)
             {
-                Console.Write("Название агентства: ");
-                agencyname = Console.ReadLine();
+                case 1:
+                {
+                    AddAgency();
+                    break;
+                }
+                case 2:
+                {
+                    break;
+                }
+                case 3:
+                {
+                    break;
+                }
+                case 4:
+                {
+                    break;
+                }
+                case 5:
+                {
+                    return 0;
+                }
+            }
 
-                Console.Write("Введите вид рекламы: ");
-                adtype = Console.ReadLine();
-
+            /*for (;;)
+            {
+                
                 Console.Write("ФИО сотрудника: ");
                 empname = Console.ReadLine();
-
+                
+                
+                
                 //Console.Write("Имя: ");
                 //empname = Console.ReadLine();
 
@@ -188,7 +210,7 @@ namespace Наследование
                 Console.Write("Место проживания: ");
                 clienthouse = Console.ReadLine();
 
-                // Создаём экземпляр объекта AdvertisingAgency с именем, введённым в переменную agencyname
+                /#1#/ Создаём экземпляр объекта AdvertisingAgency с именем, введённым в переменную agencyname
                 var agency = new AdvertisingAgency(agencyname);
 
                 // Создаём массив с рекламами и присваиваем его полю Orders
@@ -224,9 +246,40 @@ namespace Наследование
 
                 Console.WriteLine("\n== Добавленные клиенты ==");
                 agency.Clients[0].DisplayPerson();
-                agency.Clients[0].DisplayMoney();
+                agency.Clients[0].DisplayMoney();#1#
                 Console.ReadLine();
-            }
+            }*/
+            return 0;
         }
+    
+
+    int AddAgency()
+        {
+            string agencyname,
+                adtype,
+                empname,
+                emppos,
+                empdep,
+                empnumber,
+                clientname,
+                clientlastname,
+                clientpatronymic,
+                clientnumber,
+                clienthouse;
+
+            float rating;
+            
+            Console.Write("Название агентства: ");
+            agencyname = Console.ReadLine();
+
+            Console.Write("Введите рейтинг: ");
+            rating = Int32.Parse(Console.ReadLine());
+            
+            AdvertisingAgency agency = new AdvertisingAgency(agencyname, rating);
+            Agencies.Add(agency);
+            
+            return 0;
+        }
+        
     }
 }
