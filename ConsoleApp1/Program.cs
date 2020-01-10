@@ -168,6 +168,9 @@ namespace inheritance
                 }
                 case 4:
                 {
+                    ShowAgencies();
+                    Console.ReadKey();
+                    Menu();
                     break;
                 }
                 case 5:
@@ -263,7 +266,7 @@ namespace inheritance
         }
     
 
-    static int AddAgency()
+    static void AddAgency()
         {
             string agencyname,
                 adtype,
@@ -288,10 +291,16 @@ namespace inheritance
             
             AdvertisingAgency agency = new AdvertisingAgency(agencyname, rating);
             Agencies.Add(agency);
-            Agencies[0].DisplayNameAndAd();
-            
-            return 0;
+
         }
-        
+
+    static void ShowAgencies()
+    {
+        foreach (var item in Agencies)
+        {
+            item.DisplayNameAndAd();
+        }
+    }
+    
     }
 }
