@@ -134,9 +134,9 @@ namespace inheritance
 
     internal class Program
     {
-        List<AdvertisingAgency> Agencies = new List<AdvertisingAgency>() { };
+        static List<AdvertisingAgency> Agencies = new List<AdvertisingAgency>() { };
 
-        int Main()
+        static int Main()
         {
 
             int choose = 5;
@@ -253,7 +253,7 @@ namespace inheritance
         }
     
 
-    int AddAgency()
+    static int AddAgency()
         {
             string agencyname,
                 adtype,
