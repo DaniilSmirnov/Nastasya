@@ -111,12 +111,11 @@ namespace inheritance
     {
         private string Empname;
 
-        public Employee(string name, string surname, string patronymic, string position, string department, string empname) : base(name,
+        public Employee(string name, string surname, string patronymic, string position, string department) : base(name,
             surname, patronymic)
         {
             Position = position;
             Department = department;
-            Empname = empname;
         }
         
         public string Position { get; set; }
@@ -137,6 +136,8 @@ namespace inheritance
     internal class Program
     {
         static List<AdvertisingAgency> Agencies = new List<AdvertisingAgency>() { };
+        static List<Employee> Employers = new List<Employee>() { };
+        static List<Client> Clients = new List<Client>() { };
 
         static int Menu()
         {
@@ -160,10 +161,18 @@ namespace inheritance
                 }
                 case 2:
                 {
+                    AddEmployer();
+                    Console.WriteLine("Сотрудник успешно добавлен");
+                    Console.ReadKey();
+                    Menu();
                     break;
                 }
                 case 3:
                 {
+                    AddClient();
+                    Console.WriteLine("Клиент успешно добавлен");
+                    Console.ReadKey();
+                    Menu();
                     break;
                 }
                 case 4:
@@ -266,41 +275,82 @@ namespace inheritance
         }
     
 
-    static void AddAgency()
+        static void AddAgency()
         {
-            string agencyname,
-                adtype,
-                empname,
-                emppos,
-                empdep,
-                empnumber,
-                clientname,
-                clientlastname,
-                clientpatronymic,
-                clientnumber,
-                clienthouse;
+            string agencyname;
+                    
 
             double rating;
-            
+                
             Console.Write("Название агентства: ");
             agencyname = Console.ReadLine();
 
             Console.Write("Введите рейтинг: ");
             var buf = Console.ReadLine();
             rating = Convert.ToDouble(buf.Trim());
-            
-            AdvertisingAgency agency = new AdvertisingAgency(agencyname, rating);
+                
+            var agency = new AdvertisingAgency(agencyname, rating);
             Agencies.Add(agency);
 
+            }
+
+        static void ShowAgencies()
+        {
+            foreach (var item in Agencies)
+            {
+                item.DisplayNameAndAd();
+            }
         }
 
-    static void ShowAgencies()
-    {
-        foreach (var item in Agencies)
+        static void AddEmployer()
         {
-            item.DisplayNameAndAd();
+            string name;
+            string surname;
+            string patronymic;
+            string position;
+            string department;
+
+            Console.Write("Имя: ");
+            name = Console.ReadLine();
+
+            Console.Write("Фамилия: ");
+            surname = Console.ReadLine();
+            
+            Console.Write("Отчество: ");
+            patronymic = Console.ReadLine();
+
+            Console.Write("Отдел: ");
+            department = Console.ReadLine();
+
+            Console.Write("Должность: ");
+            position = Console.ReadLine();
+            
+            var emp = new Employee(name, surname, patronymic, position, department);
+            Employers.Add(emp);
         }
-    }
-    
+        
+        static void AddClient()
+        {
+            string name;
+            string surname;
+            string patronymic;
+            int haveMoney;
+            
+
+            Console.Write("Имя: ");
+            name = Console.ReadLine();
+
+            Console.Write("Фамилия: ");
+            surname = Console.ReadLine();
+            
+            Console.Write("Отчество: ");
+            patronymic = Console.ReadLine();
+
+            Console.Write("Бюджет: ");
+            haveMoney = Convert.ToInt32(Console.ReadLine());
+            
+            var cli = new Client(name, surname, patronymic, haveMoney);
+            Clients.Add(cli);
+        }
     }
 }
