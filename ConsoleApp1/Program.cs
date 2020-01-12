@@ -37,6 +37,7 @@ namespace inheritance
         {
             Console.WriteLine("Имя рекламного агентства: " + Name);
             Console.WriteLine("Рейтинг рекламного агентства: " + Rating);
+            
             /*
             Console.WriteLine("Вид добавленной рекламы: " + Ads[0].Type);
             Console.WriteLine("Цена: " + Ads[0].Price);
@@ -145,7 +146,7 @@ namespace inheritance
             Console.WriteLine("3. Добавить клиента");
             Console.WriteLine("4. Посмотреть информацию об агенствах");
             Console.WriteLine("5. Выйти через окно");
-            choose = Int32.Parse(Console.ReadLine() ?? throw new InvalidOperationException());
+            choose = Int32.Parse(Console.ReadLine().Trim() ?? throw new InvalidOperationException());
             switch (choose)
             {
                 case 1:
@@ -191,83 +192,7 @@ namespace inheritance
         {
 
             Menu();
-            /*for (;;)
-            {
-                
-                Console.Write("ФИО сотрудника: ");
-                empname = Console.ReadLine();
-                
-                
-                
-                //Console.Write("Имя: ");
-                //empname = Console.ReadLine();
-
-                //Console.Write("Отчество: ");
-                //emppatronymic = Console.ReadLine();
-
-                Console.Write("Отдел: ");
-                empdep = Console.ReadLine();
-
-                Console.Write("Должность: ");
-                emppos = Console.ReadLine();
-
-                Console.Write("Номер телефона: ");
-                empnumber = Console.ReadLine();
-
-                Console.Write("Фамилия клиента: ");
-                clientlastname = Console.ReadLine();
-
-                Console.Write("Имя: ");
-                clientname = Console.ReadLine();
-
-                Console.Write("Отчество: ");
-                clientpatronymic = Console.ReadLine();
-
-                Console.Write("Номер телефона: ");
-                clientnumber = Console.ReadLine();
-
-                Console.Write("Место проживания: ");
-                clienthouse = Console.ReadLine();
-
-                /#1#/ Создаём экземпляр объекта AdvertisingAgency с именем, введённым в переменную agencyname
-                var agency = new AdvertisingAgency(agencyname);
-
-                // Создаём массив с рекламами и присваиваем его полю Orders
-                agency.Ads = new Advertising[1];
-
-                // Создаём экземпляр объекта Advertising с видом, введённым в переменную adtype
-                var ad = new Advertising(adtype);
-                ad.Price = 500;
-                ad.OrdersCount = 25;
-
-                // Добавляем этот экземпляр в массив с рекламами
-                agency.Ads[0] = ad;
-
-                // Создаём массив с сотрудниками и присваиваем его полю Employeers
-                agency.Employeers = new Employee[3];
-
-                // Создаём экземпляр объекта Employee
-                var emp = new Employee(empname);
-
-                // Добавляем этот экземпляр в массив с сотрудниками
-                agency.Employeers[0] = emp;
-
-                // Повторяем то, что мы делали с сотрудниками, но для клиентов
-                agency.Clients = new Client[2];
-                var client = new Client(clientname, clientlastname, clientpatronymic, 300);
-                agency.Clients[0] = client;
-                Console.WriteLine("\n== Результат ==");
-                agency.DisplayNameAndAd();
-
-                Console.WriteLine("\n== Добавленные сотрудники ==");
-                agency.Employeers[0].DisplayPerson();
-                agency.Employeers[0].DisplayPosition();
-
-                Console.WriteLine("\n== Добавленные клиенты ==");
-                agency.Clients[0].DisplayPerson();
-                agency.Clients[0].DisplayMoney();#1#
-                Console.ReadLine();
-            }*/
+           
             return 0;
         }
 
