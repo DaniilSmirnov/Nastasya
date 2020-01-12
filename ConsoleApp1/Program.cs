@@ -37,7 +37,19 @@ namespace inheritance
         {
             Console.WriteLine("Имя рекламного агентства: " + Name);
             Console.WriteLine("Рейтинг рекламного агентства: " + Rating);
-            
+            Console.WriteLine("Cотрудники:");
+            foreach (var item in Employers)
+            {
+                item.DisplayPerson();
+                item.DisplayPosition();
+                item.DisplayDepartment();
+            }
+            Console.WriteLine("Клиенты:");
+            foreach (var item in Clients)
+            {
+                item.DisplayCLient();
+                item.DisplayMoney();
+            }
             /*
             Console.WriteLine("Вид добавленной рекламы: " + Ads[0].Type);
             Console.WriteLine("Цена: " + Ads[0].Price);
@@ -146,7 +158,7 @@ namespace inheritance
             Console.WriteLine("3. Добавить клиента");
             Console.WriteLine("4. Посмотреть информацию об агенствах");
             Console.WriteLine("5. Выйти через окно");
-            choose = Int32.Parse(Console.ReadLine().Trim() ?? throw new InvalidOperationException());
+            choose = Int32.Parse(Console.ReadLine().Trim());
             switch (choose)
             {
                 case 1:
