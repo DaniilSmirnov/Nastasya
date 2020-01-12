@@ -15,10 +15,7 @@ namespace inheritance
             Rating = rating;
         }
 
-        public AdvertisingAgency(string agencyname)
-        {
-            this.agencyname = agencyname;
-        }
+        
 
         public string Name
         {
@@ -32,11 +29,9 @@ namespace inheritance
             set => _rating = value;
         }
 
-        public Employee[] Employeers { get; set; }
-
-        public Client[] Clients { get; set; }
-
-        public Advertising[] Ads { get; set; }
+        public List<Employee> Employers = new List<Employee>() { };
+        public List<Client> Clients = new List<Client>() { };
+        public List<Advertising> Adverts = new List<Advertising>() { };
 
         public void DisplayNameAndAd()
         {
@@ -50,19 +45,21 @@ namespace inheritance
         }
     }
 
-    internal class Advertising : AdvertisingAgency
+    internal class Advertising
     {
-        public Advertising(string type)
-            : base(_name)
+        public Advertising(string name, string type, double price)
+            
         {
             Type = type;
+            Price = price;
+            Name = name;
         }
 
         public string Type { get; set; }
 
-        public int Price { get; set; }
+        public double Price { get; set; }
 
-        public int OrdersCount { get; set; }
+        public string Name { get; set; }
     }
 
     internal class Person
@@ -273,13 +270,11 @@ namespace inheritance
             }*/
             return 0;
         }
-    
 
         static void AddAgency()
         {
             string agencyname;
-                    
-
+            
             double rating;
                 
             Console.Write("Название агентства: ");
@@ -327,6 +322,19 @@ namespace inheritance
             
             var emp = new Employee(name, surname, patronymic, position, department);
             Employers.Add(emp);
+            
+            Console.WriteLine("Агенства");
+            ShowAgencies();
+            
+            Console.Write("Введите название агенства в котором этот человек работает");
+            var agency = Console.ReadLine();
+            foreach (var item in Agencies)
+            {
+                if (item.Name.Equals(agency))
+                {
+                    item.Employers.Add(emp);
+                }
+            }
         }
         
         static void AddClient()
@@ -351,6 +359,19 @@ namespace inheritance
             
             var cli = new Client(name, surname, patronymic, haveMoney);
             Clients.Add(cli);
+            
+            Console.WriteLine("Агенства");
+            ShowAgencies();
+            
+            Console.WriteLine("Введите название агенства в котором хотите обслуживаться");
+            var agency = Console.ReadLine();
+            foreach (var item in Agencies)
+            {
+                if (item.Name.Equals(agency))
+                {
+                    item.Clients.Add(cli);
+                }
+            }
         }
     }
 }
